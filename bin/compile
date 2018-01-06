@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+env_dir=$3
+build_dir=$1
+
+if [[ ! -f "${env_dir}/COMMITHASH_DEPLOY_PATH" ]]; then
+  echo 'COMMITHASH_DEPLOY_PATH not set' | indent
+  exit 1
+fi
+
+deploy_path=$(cat "${env_dir}/COMMITHASH_DEPLOY_PATH")
+deploy_path="${build_dir}/{$deploy_path}"
+deploy_dir="$(dirname "${deploy_dir}")"
+
+if [[ ! -d $deploy_dir ]]; then
+  mkdir --parents "${deploy_dir}"
+fi
+
+echo $SOURCE_VERSION > "${deploy_path}"
+chmod 644 "${deploy_path}"
+echo "-----> Deployed commit hash ($SOURCE_VERSION) to ${deploy_path}"
+exit 0
+

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+echo "commithash"
+exit 0
+
