@@ -1,6 +1,6 @@
 # Heroku Buildpack: commithash
 
-This Heroku buildpack enables deploying the current commit hash to an arbitary path in your app.
+This Heroku buildpack enables deploying the current commit hash to an arbitrary path in your app.
 
 ## Usage
 
